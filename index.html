@@ -1,40 +1,51 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinta Dan Takdir - Novel Web</title>
-    <!-- Tailwind CSS -->
+    <title>Cinta Dan Takdir — Novel Romantis oleh JalonStarboy</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
-    
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#121318',
-                        cardDark: '#1c1e24',
-                        readerDark: '#181a20',
-                        accentRed: '#be123c',
-                        accentRedDark: '#881337',
-                        accentGradientStart: '#9f1239',
-                        accentGradientEnd: '#4c0519',
+                        brand: {
+                            50: '#fdf2f4',
+                            100: '#fce7eb',
+                            500: '#e11d48',
+                            600: '#be123c',
+                            700: '#9f1239',
+                            800: '#881337',
+                            900: '#4c0519',
+                        },
+                        darkbg: '#12161f',
+                        darkcard: '#1a202c',
+                        darkborder: '#2d3748'
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Merriweather', 'serif'],
+                        serif: ['Georgia', 'Cambria', 'serif']
                     }
                 }
             }
         }
     </script>
+    <!-- Google Font Inter & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .story-text {
+            font-family: 'Lora', serif;
+            line-height: 1.85;
+        }
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
@@ -43,604 +54,748 @@
             background: rgba(0,0,0,0.1);
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.2);
+            background: #be123c;
             border-radius: 3px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255,255,255,0.4);
+        .hero-gradient {
+            background: linear-gradient(135deg, #881337 0%, #4c0519 100%);
         }
-        
-        .theme-dark {
-            --bg-main: #121318;
-            --bg-card: #181a20;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            --border-color: #27272a;
-        }
-        
-        .theme-light {
-            --bg-main: #f8fafc;
-            --bg-card: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-        }
-
-        .theme-sepia {
-            --bg-main: #f4ebd0;
-            --bg-card: #ebd9b4;
-            --text-main: #432818;
-            --text-muted: #7f5539;
-            --border-color: #ddb892;
-        }
-
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .reader-card {
-            background-color: var(--bg-card);
-            border-color: var(--border-color);
-        }
-
-        .reader-text-color {
-            color: var(--text-main);
-        }
-
-        .reader-muted-color {
-            color: var(--text-muted);
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
     </style>
 </head>
-<body class="theme-dark font-sans min-h-screen flex flex-col justify-between selection:bg-rose-900 selection:text-white pb-20">
+<body class="bg-[#12161f] text-gray-200 min-h-screen flex flex-col transition-colors duration-200">
 
-    <!-- HEADER / APP BAR -->
-    <header class="sticky top-0 z-40 bg-zinc-900/95 backdrop-blur border-b border-zinc-800 text-white shadow-md">
-        <div class="max-w-3xl mx-auto px-4 py-2.5 flex items-center justify-between">
-            <!-- Left: Menu Drawer Toggle -->
-            <button id="btnOpenDrawer" class="p-2 rounded-lg hover:bg-zinc-800 transition text-zinc-300 hover:text-white" title="Daftar Bab">
-                <i class="fa-solid fa-bars text-xl"></i>
-            </button>
-
-            <!-- Center: Title & Subtitle -->
-            <div class="text-left flex-1 px-3 min-w-0">
-                <h1 class="font-bold text-sm sm:text-base leading-tight truncate uppercase tracking-wide text-rose-100">CINTA DAN TAKDIR</h1>
-                <p class="text-[11px] text-rose-400 font-medium truncate">35 Bab • Novel Romantis</p>
+    <!-- HEADER / STICKY NAVBAR -->
+    <header class="sticky top-0 z-40 bg-[#12161f]/90 dark:bg-[#12161f]/90 border-b border-gray-800 glass-header px-4 py-2.5 transition-colors">
+        <div class="max-w-4xl mx-auto flex items-center justify-between gap-2">
+            
+            <!-- Left Controls: Menu Drawer Toggle -->
+            <div class="flex items-center gap-3">
+                <button id="openSidebarBtn" class="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800/60 focus:outline-none transition" title="Daftar Isi Bab">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+                <div class="hidden sm:block">
+                    <h1 class="font-bold text-sm text-white leading-tight truncate max-w-[180px] sm:max-w-[260px]">CINTA DAN TAKDIR</h1>
+                    <p class="text-[11px] text-rose-400 font-medium">35 Bab • Novel Romantis</p>
+                </div>
             </div>
 
-            <!-- Right Controls: Font Size & Theme Toggle -->
-            <div class="flex items-center space-x-1 sm:space-x-2">
-                <!-- Font Controls Box -->
-                <div class="flex items-center bg-zinc-800/80 rounded-lg p-1 text-xs border border-zinc-700/60">
-                    <button id="btnFontDec" class="px-2 py-1 font-semibold text-zinc-300 hover:text-white hover:bg-zinc-700 rounded transition" title="Kecilkan Font">A-</button>
-                    <span id="fontSizeDisplay" class="px-1.5 font-mono text-[11px] text-rose-400 font-bold">100%</span>
-                    <button id="btnFontInc" class="px-2 py-1 font-semibold text-zinc-300 hover:text-white hover:bg-zinc-700 rounded transition" title="Besarkan Font">A+</button>
-                </div>
+            <!-- Middle Controls: Font Size Controls (A- 100% A+) -->
+            <div class="flex items-center bg-gray-800/80 rounded-full px-3 py-1 border border-gray-700/60 text-xs shadow-inner">
+                <button id="btnFontDec" class="px-2 py-0.5 font-bold hover:text-rose-400 transition" title="Kecilkan Font">A-</button>
+                <span id="fontSizeDisplay" class="px-2 text-rose-400 font-semibold border-x border-gray-700 select-none">100%</span>
+                <button id="btnFontInc" class="px-2 py-0.5 font-bold hover:text-rose-400 transition" title="Besarkan Font">A+</button>
+            </div>
 
-                <!-- Theme Toggle Button -->
-                <button id="btnThemeToggle" class="p-2 text-zinc-300 hover:text-rose-400 hover:bg-zinc-800 rounded-lg transition" title="Ubah Tema Warna">
+            <!-- Right Controls: Theme Switcher & Bookmark -->
+            <div class="flex items-center gap-2">
+                <button id="themeToggleBtn" class="p-2 rounded-full text-amber-400 hover:bg-gray-800 transition" title="Ganti Mode Tema">
                     <i class="fa-solid fa-palette text-lg"></i>
                 </button>
             </div>
         </div>
-
-        <!-- Progress Indicator -->
-        <div class="w-full bg-zinc-800 h-1">
-            <div id="readingProgress" class="bg-rose-600 h-1 w-0 transition-all duration-300"></div>
-        </div>
     </header>
 
-    <!-- MAIN CONTAINER -->
-    <main class="max-w-3xl mx-auto w-full px-4 pt-5 flex-grow space-y-5">
+    <!-- SIDEBAR DRAWER (DAFTAR ISI 35 BAB) -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <aside id="sidebar" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-[#1a202c] z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-r border-gray-800 shadow-2xl">
+        <!-- Sidebar Header -->
+        <div class="p-4 border-b border-gray-800 flex items-center justify-between bg-gray-900/50">
+            <div>
+                <h2 class="font-bold text-lg text-white">Daftar Isi</h2>
+                <p class="text-xs text-gray-400">35 Bab Complete • JalonStarboy</p>
+            </div>
+            <button id="closeSidebarBtn" class="p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
 
-        <!-- NOVEL HERO / SUMMARY CARD -->
-        <section class="bg-gradient-to-br from-rose-900 via-rose-950 to-zinc-950 rounded-2xl p-5 sm:p-7 text-white shadow-xl border border-rose-900/40 relative overflow-hidden">
-            <!-- Decorative Accent Background -->
-            <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-rose-600/10 rounded-full blur-2xl pointer-events-none"></div>
+        <!-- Progress Bar Reading -->
+        <div class="px-4 py-2 bg-gray-900/30 border-b border-gray-800/50 flex items-center justify-between text-xs text-gray-400">
+            <span>Kemajuan Baca:</span>
+            <span id="readProgressText" class="text-rose-400 font-semibold">Bab 1 / 35</span>
+        </div>
 
-            <span class="inline-block px-3 py-1 bg-rose-900/60 border border-rose-700/40 text-rose-200 text-xs font-semibold rounded-full mb-3 shadow-inner">
-                Novel Drama Romantis
-            </span>
+        <!-- Sidebar Chapter List -->
+        <div id="chapterListContainer" class="flex-1 overflow-y-auto p-3 space-y-4">
+            <!-- Populated dynamically via JS -->
+        </div>
+    </aside>
 
-            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2 leading-tight">
-                CINTA DAN TAKDIR
-            </h2>
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-3 sm:px-6 py-6 space-y-6">
 
-            <p class="text-rose-100/90 text-sm leading-relaxed mb-5 font-normal">
-                Rizal tidak pernah menyangka bahwa kunjungannya ke Kafe Dwi Jaya Papar pada suatu sore akan mengubah perjalanan hidupnya. Sebuah kejadian sederhana mempertemukannya dengan Aisyah, seorang gadis dengan buku dan sejuta cerita. Akankah takdir menyatukan mereka di tengah ujian kehidupan?
-            </p>
+        <!-- HERO COVER CARD (Tampilan Sesuai Referensi Gambar) -->
+        <section id="heroCard" class="hero-gradient rounded-2xl p-6 text-white shadow-xl relative overflow-hidden border border-rose-900/30">
+            <!-- Background Decorative Watermark Icon -->
+            <div class="absolute -right-6 -bottom-6 opacity-10 text-white pointer-events-none">
+                <i class="fa-solid fa-heart text-9xl"></i>
+            </div>
 
-            <!-- Badges Grid -->
-            <div class="flex flex-wrap gap-2 text-xs font-medium">
-                <span class="px-3 py-1.5 bg-black/40 border border-white/10 rounded-lg text-rose-200 flex items-center gap-1.5">
-                    <i class="fa-solid fa-book-open text-rose-400"></i> 35 Bab Complete
-                </span>
-                <span class="px-3 py-1.5 bg-black/40 border border-white/10 rounded-lg text-rose-200 flex items-center gap-1.5">
-                    <i class="fa-solid fa-users text-rose-400"></i> Tokoh Utama: Rizal & Aisyah
-                </span>
-                <span class="px-3 py-1.5 bg-black/40 border border-white/10 rounded-lg text-rose-200 flex items-center gap-1.5">
-                    <i class="fa-solid fa-pen-nib text-rose-400"></i> Penulis: JalonStarboy
-                </span>
-                <span class="px-3 py-1.5 bg-black/40 border border-white/10 rounded-lg text-rose-200 flex items-center gap-1.5">
-                    <i class="fa-solid fa-location-dot text-rose-400"></i> Latar: Kafe Dwi Jaya, Papar
-                </span>
+            <div class="relative z-10 space-y-4">
+                <!-- Tag Genre Badge -->
+                <div class="inline-block px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-xs font-semibold tracking-wide border border-white/20 text-rose-100">
+                    Novel Romantis
+                </div>
+
+                <!-- Novel Main Title -->
+                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-serif uppercase leading-tight text-white drop-shadow-md">
+                    CINTA DAN TAKDIR
+                </h1>
+
+                <!-- Brief Synopsis -->
+                <p class="text-sm sm:text-base text-rose-100/90 leading-relaxed max-w-2xl font-light">
+                    Sore yang biasa di Kafe Dwi Jaya Papar berubah menjadi awal dari Takdir. Sebuah insiden kopi tumpah mempertemukan Rizal dan Aisyah, dua insan asing yang diuji oleh masa lalu, jarak, serta keteguhan rasa.
+                </p>
+
+                <hr class="border-white/15 my-3">
+
+                <!-- Meta Badges -->
+                <div class="flex flex-wrap gap-2 pt-1 text-xs">
+                    <span class="bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10 text-rose-200">
+                        <i class="fa-solid fa-book-open mr-1.5 text-rose-400"></i>35 Bab Complete
+                    </span>
+                    <span class="bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10 text-rose-200">
+                        <i class="fa-solid fa-user-group mr-1.5 text-rose-400"></i>Tokoh Utama: Rizal & Aisyah
+                    </span>
+                    <span class="bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10 text-rose-200">
+                        <i class="fa-solid fa-pen-nib mr-1.5 text-rose-400"></i>Penulis: JalonStarboy
+                    </span>
+                    <span class="bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-white/10 text-rose-200">
+                        <i class="fa-solid fa-location-dot mr-1.5 text-rose-400"></i>Latar: Kafe Dwi Jaya, Papar
+                    </span>
+                </div>
             </div>
         </section>
 
-        <!-- READER CONTAINER -->
-        <article class="reader-card rounded-2xl p-5 sm:p-8 shadow-lg border transition-all duration-200 min-h-[500px] flex flex-col justify-between">
-            <div>
-                <!-- Chapter Section Meta Header -->
-                <div class="border-b pb-4 mb-6 border-zinc-800/80">
-                    <span id="bagianTitle" class="text-xs font-bold tracking-widest text-rose-500 uppercase block mb-1">
-                        BAGIAN I — AWAL SEBUAH PERTEMUAN
+        <!-- READER CARD CONTAINER (BAGIAN BACAAN UTAMA) -->
+        <article id="readerCard" class="bg-[#1a202c] dark:bg-[#1a202c] rounded-2xl p-5 sm:p-8 border border-gray-800 shadow-xl transition-all">
+            
+            <!-- Chapter Metadata Header -->
+            <div class="border-b border-gray-800 pb-5 mb-6">
+                <span id="chapterPartTitle" class="text-xs font-bold uppercase tracking-wider text-rose-500 block mb-1">
+                    BAGIAN I — AWAL SEBUAH PERTEMUAN
+                </span>
+                <h2 id="chapterHeading" class="text-2xl sm:text-3xl font-extrabold text-white font-serif mb-4">
+                    Bab 1 — Sore yang Tak Biasa
+                </h2>
+                <div class="flex items-center justify-between text-xs text-gray-400">
+                    <span id="readTime" class="flex items-center gap-1.5">
+                        <i class="fa-regular fa-clock text-rose-400"></i> ~3 menit baca
                     </span>
-                    <h3 id="chapterTitle" class="text-xl sm:text-2xl font-bold font-serif reader-text-color tracking-tight mb-3">
-                        Bab 1 — Sore yang Tak Biasa
-                    </h3>
-
-                    <!-- Reading Info & Bookmark -->
-                    <div class="flex items-center justify-between text-xs reader-muted-color pt-1">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-regular fa-clock text-rose-400"></i>
-                            <span id="readTime">~3 menit baca</span>
-                        </div>
-
-                        <button id="btnBookmark" class="flex items-center gap-1.5 hover:text-rose-500 transition px-2 py-1 rounded-md border border-transparent hover:border-zinc-700">
-                            <i id="bookmarkIcon" class="fa-regular fa-bookmark"></i>
-                            <span id="bookmarkText">Tandai Bacaan</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Chapter Paragraphs Body -->
-                <div id="readerContent" class="reader-text-color font-serif leading-relaxed space-y-5 text-base sm:text-lg transition-all">
-                    <!-- Dynamic Chapter Content Goes Here -->
+                    <button id="bookmarkBtn" class="flex items-center gap-1.5 hover:text-rose-400 transition cursor-pointer px-2 py-1 rounded bg-gray-800/50">
+                        <i id="bookmarkIcon" class="fa-regular fa-bookmark text-rose-400"></i>
+                        <span id="bookmarkText">Tandai Bacaan</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- Chapter Navigation Controls Footer -->
-            <div class="pt-8 mt-8 border-t border-zinc-800/80 flex items-center justify-between gap-3">
-                <button id="btnPrevChapter" class="flex-1 max-w-[160px] px-4 py-2.5 rounded-xl bg-zinc-800/80 hover:bg-zinc-700 text-zinc-200 font-medium text-xs sm:text-sm flex items-center justify-center gap-2 transition disabled:opacity-40 disabled:cursor-not-allowed">
-                    <i class="fa-solid fa-chevron-left"></i> Bab Sebelum
-                </button>
+            <!-- CHAPTER TEXT CONTENT -->
+            <div id="storyContent" class="story-text text-gray-300 space-y-5 text-base sm:text-lg transition-all">
+                <!-- Loaded dynamically by JavaScript -->
+            </div>
 
-                <button id="btnOpenTocCenter" class="px-3 py-2.5 rounded-xl bg-zinc-800/40 hover:bg-zinc-800 text-rose-400 text-xs font-semibold border border-zinc-700/50 flex items-center gap-1.5 transition">
-                    <i class="fa-solid fa-list-ul"></i>
-                    <span class="hidden sm:inline">Daftar Bab</span>
+            <!-- CHAPTER NAVIGATION BUTTONS -->
+            <div class="mt-10 pt-6 border-t border-gray-800 flex items-center justify-between gap-4">
+                <button id="prevChapterBtn" class="flex-1 max-w-[180px] bg-gray-800 hover:bg-gray-700 text-white py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    <i class="fa-solid fa-arrow-left"></i> Bab Sebelumnya
                 </button>
-
-                <button id="btnNextChapter" class="flex-1 max-w-[160px] px-4 py-2.5 rounded-xl bg-rose-700 hover:bg-rose-600 text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-2 transition shadow-md disabled:opacity-40 disabled:cursor-not-allowed">
-                    Bab Berikut <i class="fa-solid fa-chevron-right"></i>
+                <button id="nextChapterBtn" class="flex-1 max-w-[180px] bg-rose-600 hover:bg-rose-700 text-white py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                    Bab Selanjutnya <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
         </article>
 
     </main>
 
-    <!-- FLOATING ACTION BUTTON (DOWNLOAD NOVEL) -->
-    <div class="fixed bottom-6 right-6 z-30">
-        <button id="btnDownloadNovel" class="w-14 h-14 bg-rose-600 hover:bg-rose-500 text-white rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-105 active:scale-95 group focus:outline-none ring-4 ring-rose-950/40" title="Unduh Novel Lengkap">
-            <i class="fa-solid fa-download text-xl group-hover:bounce"></i>
-        </button>
-    </div>
+    <!-- FOOTER -->
+    <footer class="mt-auto py-6 border-t border-gray-800 bg-[#0f131a] text-center text-xs text-gray-500">
+        <p>© 2026 Novel "Cinta Dan Takdir" karya <span class="text-rose-400 font-medium">JalonStarboy</span>.</p>
+        <p class="mt-1">Disajikan secara eksklusif dalam format E-Reader Offline Interactive Web.</p>
+    </footer>
 
-    <!-- DRAWER / TABLE OF CONTENTS MODAL -->
-    <div id="drawerOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300">
-        <aside id="drawerContent" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-zinc-900 border-r border-zinc-800 text-zinc-200 flex flex-col transform -translate-x-full transition-transform duration-300 shadow-2xl">
-            <!-- Drawer Header -->
-            <div class="p-4 border-b border-zinc-800 flex items-center justify-between bg-zinc-950">
-                <div>
-                    <h3 class="font-bold text-white text-base">Daftar Isi Bab</h3>
-                    <p class="text-xs text-rose-400">Cinta Dan Takdir • 35 Bab</p>
-                </div>
-                <button id="btnCloseDrawer" class="p-2 text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-lg transition">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
+    <!-- FLOATING DOWNLOAD BUTTON (Melayang Merah Kanan Bawah) -->
+    <button id="downloadWebBtn" class="fixed bottom-6 right-6 w-14 h-14 bg-rose-600 hover:bg-rose-500 text-white rounded-full shadow-2xl flex items-center justify-center z-40 transition-transform hover:scale-110 active:scale-95 focus:outline-none ring-4 ring-rose-900/40" title="Unduh File Aplikasi Novel (Offline Ready)">
+        <i class="fa-solid fa-download text-2xl"></i>
+    </button>
 
-            <!-- Search / Filter Bab -->
-            <div class="p-3 border-b border-zinc-800/80 bg-zinc-900/90">
-                <div class="relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-zinc-500 text-xs"></i>
-                    <input type="text" id="searchChapter" placeholder="Cari nomor atau judul bab..." class="w-full bg-zinc-800 text-xs text-white pl-8 pr-3 py-2 rounded-lg border border-zinc-700/60 focus:outline-none focus:border-rose-500">
-                </div>
-            </div>
-
-            <!-- Chapter List Container -->
-            <div id="chapterListContainer" class="flex-1 overflow-y-auto p-3 space-y-4">
-                <!-- Chapters Rendered Dynamically -->
-            </div>
-
-            <!-- Drawer Footer -->
-            <div class="p-3 border-t border-zinc-800 bg-zinc-950 text-center text-[11px] text-zinc-500">
-                Penulis: <span class="text-zinc-300 font-semibold">JalonStarboy</span>
-            </div>
-        </aside>
-    </div>
-
-    <!-- NOTIFICATION TOAST -->
-    <div id="toast" class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-zinc-800 text-white text-xs px-4 py-2.5 rounded-full shadow-xl border border-zinc-700 opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2">
-        <i class="fa-solid fa-circle-check text-rose-400"></i>
-        <span id="toastMsg">Notifikasi</span>
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-24 right-6 bg-gray-900 text-white px-4 py-3 rounded-xl border border-rose-500/50 shadow-2xl text-xs sm:text-sm transform translate-y-10 opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-rose-500 text-lg"></i>
+        <span id="toastMsg">Bookmark berhasil disimpan!</span>
     </div>
 
     <!-- JAVASCRIPT LOGIC & NOVEL DATA -->
     <script>
-        // --- 1. DATA NOVEL (35 BAB LENGKAP) ---
+        // --- DATA STRUCTURE: 35 NOVEL CHAPTERS COMPLETE ---
         const NOVEL_DATA = {
             title: "Cinta Dan Takdir",
             author: "JalonStarboy",
-            totalChapters: 35,
-            sections: [
+            parts: [
                 {
-                    title: "Bagian I — Awal Sebuah Pertemuan",
+                    partTitle: "BAGIAN I — AWAL SEBUAH PERTEMUAN",
                     chapters: [
-                        { id: 1, title: "Sore yang Tak Biasa", time: "~3 menit baca" },
-                        { id: 2, title: "Secangkir Kopi dan Sebuah Kesalahan", time: "~4 menit baca" },
-                        { id: 3, title: "Gadis di Dekat Jendela", time: "~3 menit baca" },
-                        { id: 4, title: "Nama yang Sulit Dilupakan", time: "~3 menit baca" },
-                        { id: 5, title: "Pertemuan Kedua", time: "~4 menit baca" },
-                        { id: 6, title: "Percakapan di Bawah Langit Senja", time: "~5 menit baca" },
-                        { id: 7, title: "Nomor yang Tersimpan", time: "~3 menit baca" }
+                        {
+                            id: 1,
+                            title: "Bab 1 — Sore yang Tak Biasa",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Hujan gerimis baru saja mereda di Papar. Aroma tanah basah beradu padu dengan wangi biji kopi roaster yang menyeruak keluar dari pintu kaca Kafe Dwi Jaya. Rizal melangkah masuk, menyapu pandangannya ke seluruh penjuru ruangan yang didominasi ornamen kayu hangat.</p>
+                                <p>Sore itu terasa melelahkan baginya. Pekerjaan proyek yang menumpuk dan benak yang bising menuntut sedikit ketenangan. Rizal memesan secangkir Americano panas favoritnya, lalu berjalan menuju sudut kafe yang tenang.</p>
+                                <p>Namun, matanya tak sengaja tertuju pada sebuah meja dekat jendela besar. Seorang gadis duduk tertegun menatap bulir air hujan di kaca, ditemani tumpukan buku tebal. Ada ketenangan anggun yang terpancar dari raut wajahnya, sesuatu yang seketika mencuri perhatian Rizal di tengah dinginnya sore itu.</p>
+                            `
+                        },
+                        {
+                            id: 2,
+                            title: "Bab 2 — Secangkir Kopi dan Sebuah Kesalahan",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Tangan Rizal memegang cangkir keramik berisi kopi panas. Saat ia hendak melangkah melintasi lorong meja menuju tempat duduknya, seorang pelanggan lain tiba-tiba berbalik secara mendadak.</p>
+                                <p>Langkah Rizal terhenti mendadak. Keseimbangannya bergoyang, dan sebagian cairan kopi hitam di cangkirnya terpercik keras menghantam sudut meja kayu—menumpahi ujung notebook bersampul cokelat milik gadis di dekat jendela.</p>
+                                <p>"Astaga! Maafkan saya, saya sungguh tidak sengaja!" seru Rizal panik, dengan cekatan mengambil tisu di atas meja untuk mengeringkan halaman buku tersebut. Gadis itu terkejut, matanya terbelalak menatap Rizal yang kini sibuk meminta maaf dengan wajah serba salah.</p>
+                            `
+                        },
+                        {
+                            id: 3,
+                            title: "Bab 3 — Gadis di Dekat Jendela",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>"Tidak apa-apa, tenanglah... Hanya sampul luar yang kena sedikit," suara lembut gadis itu menghentikan gerakan panik Rizal. Gadis itu mengukir senyum tipis yang mendamaikan.</p>
+                                <p>Rizal mendongak, menatap matanya yang teduh. Gadis itu bernama Aisyah. Dalam balutan busana kasual yang rapi dan jilbab yang pas di wajahnya, Aisyah tampak begitu tenang meski catatannya baru saja menjadi korban kecerobohan tak disengaja.</p>
+                                <p>"Sebagai gantinya, izinkan saya mengganti kopi atau minuman Anda, serta buku catatan ini," tawar Rizal penuh rasa penyesalan. Aisyah menggeleng perlahan, "Tidak perlu repot-repot, mas."</p>
+                            `
+                        },
+                        {
+                            id: 4,
+                            title: "Bab 4 — Nama yang Sulit Dilupakan",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Meskipun Aisyah menolak, Rizal tidak bisa membiarkan rasa bersalahnya menggantung begitu saja. Ia memesankan sepotong kue red velvet dan menyuruh kasir menyajikannya ke meja Aisyah.</p>
+                                <p>"Saya Rizal," ucap Rizal memperkenalkan diri saat mengantarkan kue tersebut ke meja Aisyah.</p>
+                                <p>"Aisyah," jawabnya singkat namun hangat. Nama sederhana yang malam itu berulang kali berputar di kepala Rizal bahkan ketika ia sudah kembali ke rumah. Senyuman Aisyah sore itu seperti bayangan yang enggan memudar dari ingatan Rizal.</p>
+                            `
+                        },
+                        {
+                            id: 5,
+                            title: "Bab 5 — Pertemuan Kedua",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Tiga hari berlalu. Rizal sengaja datang kembali ke Kafe Dwi Jaya pada jam yang sama. Ia berpura-pura hendak bekerja, namun matanya tak berhenti melirik ke arah meja dekat jendela.</p>
+                                <p>Langkah takdir bekerja secara misterius. Pintu kaca kafe berdentang manis, dan sosok Aisyah melangkah masuk. Tatapan mereka bertemu seketika. Aisyah tersenyum mengenali sosok pria yang pernah menumpahkan kopi ke bukunya.</p>
+                                <p>"Ternyata kamu sering ke sini juga, Rizal?" sapa Aisyah pelan saat melewati meja Rizal.</p>
+                            `
+                        },
+                        {
+                            id: 6,
+                            title: "Bab 6 — Percakapan di Bawah Langit Senja",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Sore itu, untuk pertama kalinya Rizal dan Aisyah duduk di satu meja yang sama. Berawal dari obrolan ringan tentang buku kesukaan hingga latar belakang pekerjaan masing-masing.</p>
+                                <p>Rizal mengagumi cara Aisyah memandang kehidupan—sederhana namun penuh makna mendalam. Di bawah naungan langit senja Papar yang berwarna jingga keemasan, percakapan mereka mengalir tanpa rasa canggung, seolah mereka telah saling mengenal sejak lama.</p>
+                            `
+                        },
+                        {
+                            id: 7,
+                            title: "Bab 7 — Nomor yang Tersimpan",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Ketika lampu-lampu Kafe Dwi Jaya mulai dinyalakan menandakan malam telah tiba, waktu terasa berjalan terlalu cepat bagi Rizal. Aisyah bersiap untuk pulang.</p>
+                                <p>"Aisyah... jika tidak keberatan, bisakah kita bertukar nomor telepon? Siapa tahu kita bisa ngobrol lagi di lain waktu," pinta Rizal ragu-ragu.</p>
+                                <p>Aisyah tersenyum, lalu menyodorkan ponselnya. Angka-angka itu kini tersimpan rapi, menjadi pintu awal dari jalinan takdir yang lebih luas.</p>
+                            `
+                        }
                     ]
                 },
                 {
-                    title: "Bagian II — Tumbuhnya Perasaan",
+                    partTitle: "BAGIAN II — TUMBUHNYA PERASAAN",
                     chapters: [
-                        { id: 8, title: "Pesan Selamat Pagi", time: "~3 menit baca" },
-                        { id: 9, title: "Kursi Favorit Kita", time: "~4 menit baca" },
-                        { id: 10, title: "Tawa di Tengah Hujan", time: "~5 menit baca" },
-                        { id: 11, title: "Perhatian Kecil Rizal", time: "~4 menit baca" },
-                        { id: 12, title: "Rahasia di Balik Senyuman", time: "~4 menit baca" },
-                        { id: 13, title: "Ketika Rindu Mulai Hadir", time: "~3 menit baca" },
-                        { id: 14, title: "Sebuah Pengakuan yang Tertunda", time: "~5 menit baca" }
+                        {
+                            id: 8,
+                            title: "Bab 8 — Pesan Selamat Pagi",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Sinar matahari pagi menerobos jendela kamar Rizal. Layar ponselnya menyala menampilkan sebuah notifikasi pesan singkat. <em>"Selamat pagi Rizal, semoga harimu menyenangkan!"</em> dari Aisyah.</p>
+                                <p>Sebuah pesan sederhana yang sanggup menerbitkan senyum mengembang di bibir Rizal sepanjang pagi. Percakapan digital yang intens pun dimulai di antara mereka, diisi saling tegur sapa dan cerita keseharian.</p>
+                            `
+                        },
+                        {
+                            id: 9,
+                            title: "Bab 9 — Kursi Favorit Kita",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Meja dekat jendela di Kafe Dwi Jaya kini tak lagi disebut sebagai 'meja jendela', melainkan 'kursi favorit kita'. Hampir setiap akhir pekan, Rizal dan Aisyah menyempatkan diri bertemu di sana.</p>
+                                <p>Satu cangkir kopi untuk Rizal dan cangkir teh chamomile untuk Aisyah. Tempat itu menjadi saksi bisu tumbuh suburnya rasa nyaman dan ketertarikan di antara dua jiwa.</p>
+                            `
+                        },
+                        {
+                            id: 10,
+                            title: "Bab 10 — Tawa di Tengah Hujan",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Hujan deras mengguyur area Papar tanpa peringatan. Rizal dan Aisyah terpaksa berlari kecil menuju pelataran Kafe Dwi Jaya agar tidak basah kuyup. Sepatu mereka basah, namun tawa lepas terdengar dari mulut Aisyah saat melihat rambut Rizal yang berantakan terkena cipratan air.</p>
+                                <p>Di bawah tatapan mata yang hangat dalam dinginnya hujan, Rizal menyadari satu hal: bahagia ternyata sesederhana tertawa bersama orang yang tepat.</p>
+                            `
+                        },
+                        {
+                            id: 11,
+                            title: "Bab 11 — Perhatian Kecil Rizal",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Suatu hari Aisyah mengeluh lelah karena lembur tugas kantor. Tanpa banyak bicara, Rizal mengirimkan makanan hangat kesukaan Aisyah langsung ke alamat tempat kerjanya.</p>
+                                <p>Aisyah tersentuh oleh perhatian Rizal yang tidak berlebihan namun selalu hadir di saat yang paling ia butuhkan. Benih-benih cinta mulai bersemi semakin dalam di hati Aisyah.</p>
+                            `
+                        },
+                        {
+                            id: 12,
+                            title: "Bab 12 — Rahasia di Balik Senyuman",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Meskipun Aisyah selalu tampak ceria, Rizal mulai menyadari ada selapis kesedihan yang kadang melintas di tatapan matanya saat Aisyah terdiam. Ada luka masa lalu yang belum sepenuhnya selesai dalam diri Aisyah, sebuah rahasia yang masih ia simpan rapat.</p>
+                            `
+                        },
+                        {
+                            id: 13,
+                            title: "Bab 13 — Ketika Rindu Mulai Hadir",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Tugas luar kota membuat Rizal harus pergi selama seminggu. Jarak yang memisahkan membuat Kafe Dwi Jaya terasa sepi bagi Aisyah. Untuk pertama kalinya, Aisyah merindukan hadirnya tawa dan suara Rizal yang menenangkan.</p>
+                            `
+                        },
+                        {
+                            id: 14,
+                            title: "Bab 14 — Sebuah Pengakuan yang Tertunda",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Sepulang dari tugas luar kota, Rizal langsung menemui Aisyah. Ada dorongan kuat dalam dadanya untuk mengungkapkan isi hatinya yang sebenarnya. Namun rasa gugup dan kekhawatiran merusak momentum membuat kata-kata itu tertahan tepat di bibirnya.</p>
+                            `
+                        }
                     ]
                 },
                 {
-                    title: "Bagian III — Ujian Sebuah Hati",
+                    partTitle: "BAGIAN III — UJIAN SEBUAH HATI",
                     chapters: [
-                        { id: 15, title: "Bayangan Masa Lalu", time: "~4 menit baca" },
-                        { id: 16, title: "Salah Paham Pertama", time: "~4 menit baca" },
-                        { id: 17, title: "Diam yang Menyakitkan", time: "~3 menit baca" },
-                        { id: 18, title: "Kafe yang Terasa Asing", time: "~4 menit baca" },
-                        { id: 19, title: "Air Mata Aisyah", time: "~5 menit baca" },
-                        { id: 20, title: "Kejujuran di Tengah Malam", time: "~4 menit baca" },
-                        { id: 21, title: "Janji untuk Bertahan", time: "~4 menit baca" }
+                        {
+                            id: 15,
+                            title: "Bab 15 — Bayangan Masa Lalu",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Masa lalu kerap kali datang tanpa diundang. Sosok pria dari masa lalu Aisyah tiba-tiba muncul kembali, berusaha memperbaiki hubungan yang telah lama retak. Kehadiran mantan kekasih Aisyah ini menciptakan riak kegelisahan di dalam pikiran Aisyah.</p>
+                            `
+                        },
+                        {
+                            id: 16,
+                            title: "Bab 16 — Salah Paham Pertama",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Rizal yang tak sengaja melihat Aisyah sedang berbicara dengan pria tersebut salah mengartikan keadaan. Prasangka dan rasa cemburu merayapi benak Rizal, memicu keheningan yang dingin di antara mereka berdua.</p>
+                            `
+                        },
+                        {
+                            id: 17,
+                            title: "Bab 17 — Diam yang Menyakitkan",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Beberapa hari berlalu tanpa ada pesan atau telepon. Tidak ada lagi ucapan selamat pagi. Keheningan di antara Rizal dan Aisyah terasa jauh lebih menyakitkan ketimbang pertengkaran hebat.</p>
+                            `
+                        },
+                        {
+                            id: 18,
+                            title: "Bab 18 — Kafe yang Terasa Asing",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Rizal duduk sendirian di meja favorit mereka di Kafe Dwi Jaya. Tempat yang biasanya penuh kehangatan kini terasa asing dan dingin. Ia merenungi kebodohannya yang membiarkan amarah menguasai logika.</p>
+                            `
+                        },
+                        {
+                            id: 19,
+                            title: "Bab 19 — Air Mata Aisyah",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Di kamar tenangnya, Aisyah meneteskan air mata. Ia merasa sedih karena Rizal meragukan kesetiaan hatinya. Aisyah menyadari betapa dalam arti Rizal dalam hidupnya, dan betapa perihnya ketika kepercayaan itu goyah.</p>
+                            `
+                        },
+                        {
+                            id: 20,
+                            title: "Bab 20 — Kejujuran di Tengah Malam",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Tak tahan lagi menanggung beban rindu dan kesalahpahaman, Rizal menelepon Aisyah di tengah malam. Keduanya berbicara dengan jujur, membongkar seluruh ego dan rasa takut yang selama ini membentengi perasaan mereka.</p>
+                            `
+                        },
+                        {
+                            id: 21,
+                            title: "Bab 21 — Janji untuk Bertahan",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Kesalahpahaman akhirnya lurus. Rizal meminta maaf atas kecemburuannya, dan Aisyah menegaskan bahwa masa lalunya telah benar-benar usai. Malam itu, kepercayaan mereka pulih dan ikatan batin keduanya justru semakin menguat.</p>
+                            `
+                        }
                     ]
                 },
                 {
-                    title: "Bagian IV — Jarak dan Kesetiaan",
+                    partTitle: "BAGIAN IV — JARAK DAN KESETIAAN",
                     chapters: [
-                        { id: 22, title: "Kabar dari Kejauhan", time: "~4 menit baca" },
-                        { id: 23, title: "Hari-Hari Tanpa Pertemuan", time: "~3 menit baca" },
-                        { id: 24, title: "Ujian Kepercayaan", time: "~5 menit baca" },
-                        { id: 25, title: "Surat yang Tak Pernah Dikirim", time: "~4 menit baca" },
-                        { id: 26, title: "Kembali ke Dwi Jaya", time: "~3 menit baca" },
-                        { id: 27, title: "Di Antara Harapan dan Ketakutan", time: "~4 menit baca" },
-                        { id: 28, title: "Keputusan Rizal", time: "~5 menit baca" }
+                        {
+                            id: 22,
+                            title: "Bab 22 — Kabar dari Kejauhan",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Rizal mendapat penugasan penting dari perusahaannya untuk memimpin cabang baru di luar kota selama beberapa bulan. Keputusan sulit harus diambil demi masa depan karirnya.</p>
+                            `
+                        },
+                        {
+                            id: 23,
+                            title: "Bab 23 — Hari-Hari Tanpa Pertemuan",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Ujian sebenarnya dari kesetiaan baru saja dimulai. Hari-hari diisi dengan hubungan jarak jauh (LDR). Kesibukan masing-masing membuat waktu berkomunikasi menjadi sangat terbatas.</p>
+                            `
+                        },
+                        {
+                            id: 24,
+                            title: "Bab 24 — Ujian Kepercayaan",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Jarak geografis sering kali memicu godaan rasa curiga. Namun Rizal dan Aisyah berkomitmen untuk saling terbuka dan mengedepankan kepercayaan di atas segala rasa cemas.</p>
+                            `
+                        },
+                        {
+                            id: 25,
+                            title: "Bab 25 — Surat yang Tak Pernah Dikirim",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Aisyah menuliskan kerinduannya dalam sebuah buku harian khusus. Lembar demi lembar berisi catatan doa dan asa agar Rizal selalu diberikan kesehatan dan perlindungan selama bertugas jauh dari Papar.</p>
+                            `
+                        },
+                        {
+                            id: 26,
+                            title: "Bab 26 — Kembali ke Dwi Jaya",
+                            time: "~3 menit baca",
+                            content: `
+                                <p>Setiap kali merindukan Rizal, Aisyah akan menyempatkan diri berkunjung ke Kafe Dwi Jaya, duduk di kursi favorit mereka, sambil membayangkan tawa hangat Rizal di hadapannya.</p>
+                            `
+                        },
+                        {
+                            id: 27,
+                            title: "Bab 27 — Di Antara Harapan dan Ketakutan",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Masa tugas Rizal hampir berakhir. Namun muncul desas-desus bahwa proyek Rizal mungkin akan diperpanjang lebih lama. Hati Aisyah diuji antara mendukung impian Rizal atau merindukan kepulangannya.</p>
+                            `
+                        },
+                        {
+                            id: 28,
+                            title: "Bab 28 — Keputusan Rizal",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Rizal menyadari apa yang paling berharga dalam hidupnya. Karir memang penting, namun ada hati di Papar yang sedang menunggunya. Rizal mengambil keputusan tegas untuk menyelesaikan tugas tepat waktu dan kembali pulang.</p>
+                            `
+                        }
                     ]
                 },
                 {
-                    title: "Bagian V — Takdir yang Menemukan Jalan",
+                    partTitle: "BAGIAN V — TAKDIR YANG MENEMUKAN JALAN",
                     chapters: [
-                        { id: 29, title: "Pertemuan Setelah Penantian", time: "~4 menit baca" },
-                        { id: 30, title: "Percakapan dari Hati ke Hati", time: "~5 menit baca" },
-                        { id: 31, title: "Restu yang Dinantikan", time: "~4 menit baca" },
-                        { id: 32, title: "Langkah Menuju Masa Depan", time: "~4 menit baca" },
-                        { id: 33, title: "Kembali ke Meja Pertama", time: "~3 menit baca" },
-                        { id: 34, title: "Cinta yang Dipilih Setiap Hari", time: "~4 menit baca" },
-                        { id: 35, title: "Pertemuan yang Menjadi Takdir", time: "~5 menit baca" }
+                        {
+                            id: 29,
+                            title: "Bab 29 — Pertemuan Setelah Penantian",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Sore yang cerah di Papar. Aisyah melangkah masuk ke Kafe Dwi Jaya. Saat ia hendak melangkah menuju meja favoritnya, sosok pria kemeja biru tersemat senyum hangat sudah berdiri di sana memegang seikat bunga segar. Rizal telah kembali!</p>
+                            `
+                        },
+                        {
+                            id: 30,
+                            title: "Bab 30 — Percakapan dari Hati ke Hati",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Dua insan yang terpisah jarak akhirnya bertatap muka kembali. Semua rindu dan penantian panjang terbayar tuntas sore itu. Rizal mengungkapkan betapa keberadaan Aisyah adalah kompas kehidupannya selama ini.</p>
+                            `
+                        },
+                        {
+                            id: 31,
+                            title: "Bab 31 — Restu yang Dinantikan",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Rizal memberanikan diri berkunjung ke rumah orang tua Aisyah. Dengan niat tulus dan kesungguhan hati, Rizal menyampaikan niat mulianya untuk melangkah ke jenjang yang lebih serius bersama Aisyah.</p>
+                            `
+                        },
+                        {
+                            id: 32,
+                            title: "Bab 32 — Langkah Menuju Masa Depan",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Restu dari kedua keluarga mengalir penuh kehangatan. Persiapan melangkah ke jenjang pernikahan mulai dirancang bersama dengan penuh kebahagiaan dan rasa syukur.</p>
+                            `
+                        },
+                        {
+                            id: 33,
+                            title: "Bab 33 — Kembali ke Meja Pertama",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>Beberapa hari menjelang hari bahagia mereka, Rizal dan Aisyah menyempatkan diri kembali ke Kafe Dwi Jaya Papar. Mereka tertawa mengenang insiden tumpahnya kopi panas beberapa waktu lalu yang menjadi skenario indah Sang Pencipta.</p>
+                            `
+                        },
+                        {
+                            id: 34,
+                            title: "Bab 34 — Cinta yang Dipilih Setiap Hari",
+                            time: "~4 menit baca",
+                            content: `
+                                <p>"Cinta bukan sekadar pertemuan tidak sengaja," ucap Rizal sambil menggenggam jemari Aisyah. "Cinta adalah keputusan untuk terus memilih dan memperjuangkan satu sama lain setiap hari." Aisyah tersenyum mengangguk setuju.</p>
+                            `
+                        },
+                        {
+                            id: 35,
+                            title: "Bab 35 — Pertemuan yang Menjadi Takdir",
+                            time: "~5 menit baca",
+                            content: `
+                                <p>Malam akrab berlangsung khidmat. Rizal dan Aisyah kini resmi mengikat janji suci kehidupan. Kejadian sederhana di sore yang biasa di Kafe Dwi Jaya Papar telah menjelma menjadi kisah abadi.</p>
+                                <p>Pertemuan yang tak pernah mereka rencanakan telah dituntun oleh benang-benang takdir menjadi kebersamaan yang indah dan penuh kesetiaan. Kisah mereka membuktikan bahwa ketika dua hati ditakdirkan bersama, tak ada jarak atau ujian yang tak sanggup mereka lalui.</p>
+                                <p class="text-center italic font-semibold text-rose-400 mt-8 mb-4">— TAMAT —</p>
+                            `
+                        }
                     ]
                 }
             ]
         };
 
-        // Story Template Generator to provide meaningful content for every chapter
-        function generateStoryText(chapterId, title) {
-            const templates = [
-                `<p>Sore itu di Papar, udara terasa hangat berkabut tipis sesudah gerimis. Kafe Dwi Jaya berdiri tenang di sudut jalan utama, memancarkan aroma biji kopi yang sangrai hangat. Rizal melangkah masuk dengan bahu sedikit lelah setelah menyelesaikan tumpukan berkas pekerjaan harian.</p>
-                <p>"Kopi hitam tanpa gula, Mas," ucap Rizal ramah pada barista langganannya. Ia lalu memilih duduk di sudut meja kayu yang menghadap langsung ke arah jendela utama.</p>
-                <p>Tak lama kemudian, lonceng pintu berdentang kecil. Seorang gadis melangkah masuk membawa tas kain berwarna krem dan sebuah buku tebal bermotor sampul klasik. Itulah Aisyah. Matanya jelalatan mencari tempat kosong sebelum pandangannya tertuju pada area dekat jendela—area yang tak jauh dari tempat Rizal duduk.</p>
-                <p>Tanpa saling menyadari, takdir mulai merajut benang pertamanya di bawah naungan atap Kafe Dwi Jaya sore itu.</p>`,
+        // --- APP STATE MANAGEMENT ---
+        let currentChapterId = parseInt(localStorage.getItem('cda_current_chapter')) || 1;
+        let fontSizePercent = parseInt(localStorage.getItem('cda_font_size')) || 100;
+        let bookmarkedChapters = JSON.parse(localStorage.getItem('cda_bookmarks')) || [];
+        let isDarkMode = localStorage.getItem('cda_theme') !== 'light';
 
-                `<p>Kejadian itu berlangsung begitu cepat. Rizal yang hendak berbalik mengambil tisu di meja konter tak sengaja menyenggol cangkir kopi panasnya sendiri. Cairan pekat beraroma khas itu tumpah meleleh di tepi meja, menyiram beberapa bagian pinggir buku catatan sampul kulit milik Aisyah.</p>
-                <p>"Aduh! Maaf, sungguh saya tidak sengaja!" seru Rizal panik, segera meraih serbet kertas dan mencoba mengeringkan halaman buku tersebut.</p>
-                <p>Aisyah tertegun sejenak, namun alih-alih marah, senyum tipis justru terukir halus di bibirnya. "Tidak apa-apa, Mas. Hanya sedikit kena pinggirnya. Lagipula, buku ini jadi beraroma kopi favorit saya."</p>
-                <p>Permintaan maaf yang canggung dan tawa kecil di antara ceceran kopi itu perlahan memecahkan kekakuan di antara dua insan yang awalnya tak saling kenal tersebut.</p>`,
+        // Flatten chapters for easy indexing
+        const allChapters = [];
+        NOVEL_DATA.parts.forEach(part => {
+            part.chapters.forEach(chap => {
+                allChapters.push({
+                    ...chap,
+                    partTitle: part.partTitle
+                });
+            });
+        });
 
-                `<p>Percakapan melalir lirih tanpa paksaan. Rizal mendapati dirinya terpukau oleh cara Aisyah bertutur kata—tenang, bijak, dan penuh dengan hangat keikhlasan. Aisyah menceritakan tentang hobinya membaca novel sejarah dan kegemarannya menikmati suasana senja di Papar.</p>
-                <p>"Kadang kita terlalu sibuk berlari hingga lupa menikmati langkah," ujar Aisyah pelan sambil menatap keluar jendela tempat dedaunan berselimut sisa air hujan.</p>
-                <p>Rizal mengangguk setuju. Perasaan asing namun nyaman mulai merayapi dadanya. Senyuman Aisyah sore itu seolah memudarkan rasa lelah yang menghimpit hatinya sepanjang minggu.</p>`
-            ];
-
-            const baseIdx = (chapterId - 1) % templates.length;
-            let content = templates[baseIdx];
-
-            content += `<p class="italic text-rose-400 font-sans text-sm mt-4 border-l-2 border-rose-600 pl-3">
-                (Bagian dari Bab ${chapterId}: "${title}". Dalam perjalanan Rizal dan Aisyah, setiap momen menjadi cermin bahwa pertemuan sejati tidak pernah terjadi secara kebetulan.)
-            </p>`;
-
-            return content;
-        }
-
-        // --- 2. STATE MANAGEMENT ---
-        let currentChapterId = 1;
-        let fontSizePercent = 100; // default 100%
-        let currentTheme = 'dark'; // 'dark', 'light', 'sepia'
-        let bookmarks = JSON.parse(localStorage.getItem('novel_bookmarks') || '[]');
-
-        // --- 3. DOM ELEMENTS ---
-        const readerContent = document.getElementById('readerContent');
-        const chapterTitle = document.getElementById('chapterTitle');
-        const bagianTitle = document.getElementById('bagianTitle');
-        const readTime = document.getElementById('readTime');
-        const fontSizeDisplay = document.getElementById('fontSizeDisplay');
-        const readingProgress = document.getElementById('readingProgress');
-        const btnPrevChapter = document.getElementById('btnPrevChapter');
-        const btnNextChapter = document.getElementById('btnNextChapter');
-        
-        const drawerOverlay = document.getElementById('drawerOverlay');
-        const drawerContent = document.getElementById('drawerContent');
-        const btnOpenDrawer = document.getElementById('btnOpenDrawer');
-        const btnOpenTocCenter = document.getElementById('btnOpenTocCenter');
-        const btnCloseDrawer = document.getElementById('btnCloseDrawer');
+        // --- DOM ELEMENTS ---
+        const storyContentEl = document.getElementById('storyContent');
+        const chapterHeadingEl = document.getElementById('chapterHeading');
+        const chapterPartTitleEl = document.getElementById('chapterPartTitle');
+        const readTimeEl = document.getElementById('readTime');
+        const prevBtn = document.getElementById('prevChapterBtn');
+        const nextBtn = document.getElementById('nextChapterBtn');
         const chapterListContainer = document.getElementById('chapterListContainer');
-        const searchChapter = document.getElementById('searchChapter');
+        
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const openSidebarBtn = document.getElementById('openSidebarBtn');
+        const closeSidebarBtn = document.getElementById('closeSidebarBtn');
 
-        const btnFontInc = document.getElementById('btnFontInc');
         const btnFontDec = document.getElementById('btnFontDec');
-        const btnThemeToggle = document.getElementById('btnThemeToggle');
-        const btnBookmark = document.getElementById('btnBookmark');
+        const btnFontInc = document.getElementById('btnFontInc');
+        const fontSizeDisplay = document.getElementById('fontSizeDisplay');
+
+        const bookmarkBtn = document.getElementById('bookmarkBtn');
         const bookmarkIcon = document.getElementById('bookmarkIcon');
         const bookmarkText = document.getElementById('bookmarkText');
-        const btnDownloadNovel = document.getElementById('btnDownloadNovel');
+
+        const downloadWebBtn = document.getElementById('downloadWebBtn');
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
         const toast = document.getElementById('toast');
         const toastMsg = document.getElementById('toastMsg');
+        const readProgressText = document.getElementById('readProgressText');
 
-        // --- 4. RENDER FUNCTIONS ---
+        // --- RENDER FUNCTIONS ---
 
-        // Find chapter metadata
-        function getChapterMeta(id) {
-            for (const section of NOVEL_DATA.sections) {
-                const found = section.chapters.find(c => c.id === id);
-                if (found) {
-                    return { chapter: found, sectionTitle: section.title };
-                }
-            }
-            return null;
-        }
-
-        // Render Reader
-        function loadChapter(id) {
-            if (id < 1 || id > NOVEL_DATA.totalChapters) return;
-
-            currentChapterId = id;
-            const meta = getChapterMeta(id);
-            if (!meta) return;
-
-            bagianTitle.textContent = meta.sectionTitle;
-            chapterTitle.textContent = `Bab ${meta.chapter.id} — ${meta.chapter.title}`;
-            readTime.textContent = meta.chapter.time;
-            readerContent.innerHTML = generateStoryText(id, meta.chapter.title);
-
-            // Update Nav buttons
-            btnPrevChapter.disabled = (id === 1);
-            btnNextChapter.disabled = (id === NOVEL_DATA.totalChapters);
-
-            // Update Progress bar
-            const progress = (id / NOVEL_DATA.totalChapters) * 100;
-            readingProgress.style.width = `${progress}%`;
-
-            // Update Bookmark UI
-            updateBookmarkUI();
-
-            // Highlight Drawer item
-            renderDrawerList(searchChapter.value.trim());
-
-            // Scroll to top of reader gracefully
-            window.scrollTo({ top: 120, behavior: 'smooth' });
-        }
-
-        // Render Table of Contents in Drawer
-        function renderDrawerList(filterText = '') {
+        // Render Sidebar Navigation
+        function renderSidebar() {
             chapterListContainer.innerHTML = '';
+            NOVEL_DATA.parts.forEach(part => {
+                const partHeader = document.createElement('div');
+                partHeader.className = 'text-[11px] font-bold uppercase tracking-wider text-rose-400 mt-3 mb-1 px-2';
+                partHeader.innerText = part.partTitle;
+                chapterListContainer.appendChild(partHeader);
 
-            NOVEL_DATA.sections.forEach(section => {
-                const filteredChapters = section.chapters.filter(ch => 
-                    ch.title.toLowerCase().includes(filterText.toLowerCase()) ||
-                    `bab ${ch.id}`.includes(filterText.toLowerCase())
-                );
+                part.chapters.forEach(chap => {
+                    const isCurrent = chap.id === currentChapterId;
+                    const isBookmarked = bookmarkedChapters.includes(chap.id);
 
-                if (filteredChapters.length === 0) return;
-
-                // Section Header
-                const secHeader = document.createElement('div');
-                secHeader.className = 'text-[11px] font-bold text-rose-500 uppercase tracking-wider pt-2 pb-1 border-b border-zinc-800/60 sticky top-0 bg-zinc-900 z-10';
-                secHeader.textContent = section.title;
-                chapterListContainer.appendChild(secHeader);
-
-                // Chapter Buttons
-                filteredChapters.forEach(ch => {
-                    const btn = document.createElement('button');
-                    const isActive = ch.id === currentChapterId;
-                    const isBookmarked = bookmarks.includes(ch.id);
-
-                    btn.className = `w-full text-left px-3 py-2.5 rounded-xl transition flex items-center justify-between text-xs font-medium ${
-                        isActive 
-                        ? 'bg-rose-900/60 text-white border border-rose-700/50 shadow-sm' 
-                        : 'text-zinc-300 hover:bg-zinc-800 hover:text-white'
+                    const item = document.createElement('button');
+                    item.className = `w-full text-left px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition flex items-center justify-between my-1 ${
+                        isCurrent 
+                            ? 'bg-rose-700 text-white shadow-md font-semibold' 
+                            : 'text-gray-300 hover:bg-gray-800/80 hover:text-white'
                     }`;
 
-                    btn.onclick = () => {
-                        loadChapter(ch.id);
-                        closeDrawer();
+                    item.onclick = () => {
+                        loadChapter(chap.id);
+                        closeSidebar();
                     };
 
-                    btn.innerHTML = `
-                        <div class="flex items-center gap-2 truncate">
-                            <span class="${isActive ? 'text-rose-400 font-bold' : 'text-zinc-500'}">#${ch.id}</span>
-                            <span class="truncate">${ch.title}</span>
-                        </div>
+                    item.innerHTML = `
+                        <span class="truncate pr-2">${chap.title}</span>
                         <div class="flex items-center gap-1.5 shrink-0">
-                            ${isBookmarked ? '<i class="fa-solid fa-bookmark text-rose-500 text-[10px]"></i>' : ''}
-                            <i class="fa-solid fa-chevron-right text-[10px] ${isActive ? 'text-rose-400' : 'text-zinc-600'}"></i>
+                            ${isBookmarked ? '<i class="fa-solid fa-bookmark text-amber-400 text-xs"></i>' : ''}
+                            ${isCurrent ? '<i class="fa-solid fa-chevron-right text-xs"></i>' : ''}
                         </div>
                     `;
-
-                    chapterListContainer.appendChild(btn);
+                    chapterListContainer.appendChild(item);
                 });
             });
 
-            if (chapterListContainer.children.length === 0) {
-                chapterListContainer.innerHTML = `<div class="text-center py-8 text-xs text-zinc-500">Bab tidak ditemukan</div>`;
+            readProgressText.innerText = `Bab ${currentChapterId} / ${allChapters.length}`;
+        }
+
+        // Load Active Chapter
+        function loadChapter(chapterId) {
+            const chap = allChapters.find(c => c.id === chapterId);
+            if (!chap) return;
+
+            currentChapterId = chapterId;
+            localStorage.setItem('cda_current_chapter', currentChapterId);
+
+            // Update UI Elements
+            chapterPartTitleEl.innerText = chap.partTitle;
+            chapterHeadingEl.innerText = chap.title;
+            readTimeEl.innerHTML = `<i class="fa-regular fa-clock text-rose-400"></i> ${chap.time}`;
+            storyContentEl.innerHTML = chap.content;
+
+            // Nav Buttons status
+            prevBtn.disabled = currentChapterId === 1;
+            nextBtn.disabled = currentChapterId === allChapters.length;
+
+            // Update Bookmark UI status
+            updateBookmarkState();
+
+            // Refresh Sidebar list highlight
+            renderSidebar();
+
+            // Scroll Smooth to Top of Reader Card
+            document.getElementById('readerCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Bookmark Logic
+        function updateBookmarkState() {
+            const isBookmarked = bookmarkedChapters.includes(currentChapterId);
+            if (isBookmarked) {
+                bookmarkIcon.className = 'fa-solid fa-bookmark text-amber-400';
+                bookmarkText.innerText = 'Tersimpan';
+            } else {
+                bookmarkIcon.className = 'fa-regular fa-bookmark text-rose-400';
+                bookmarkText.innerText = 'Tandai Bacaan';
             }
         }
 
-        // Font Resize
-        function updateFontSize() {
-            fontSizeDisplay.textContent = `${fontSizePercent}%`;
-            readerContent.style.fontSize = `${fontSizePercent}%`;
-        }
-
-        // Theme Switch
-        function toggleTheme() {
-            const themes = ['dark', 'light', 'sepia'];
-            const nextIdx = (themes.indexOf(currentTheme) + 1) % themes.length;
-            currentTheme = themes[nextIdx];
-
-            document.body.className = `theme-${currentTheme} font-sans min-h-screen flex flex-col justify-between selection:bg-rose-900 selection:text-white pb-20`;
-            showToast(`Tema diubah ke: ${currentTheme.toUpperCase()}`);
-        }
-
-        // Bookmarks Toggle
         function toggleBookmark() {
-            const idx = bookmarks.indexOf(currentChapterId);
-            if (idx > -1) {
-                bookmarks.splice(idx, 1);
-                showToast(`Tanda bacaan Bab ${currentChapterId} dihapus`);
+            const index = bookmarkedChapters.indexOf(currentChapterId);
+            if (index > -1) {
+                bookmarkedChapters.splice(index, 1);
+                showToast('Tanda bacaan dihapus');
             } else {
-                bookmarks.push(currentChapterId);
+                bookmarkedChapters.push(currentChapterId);
                 showToast(`Bab ${currentChapterId} berhasil ditandai!`);
             }
-            localStorage.setItem('novel_bookmarks', JSON.stringify(bookmarks));
-            updateBookmarkUI();
-            renderDrawerList(searchChapter.value.trim());
+            localStorage.setItem('cda_bookmarks', JSON.stringify(bookmarkedChapters));
+            updateBookmarkState();
+            renderSidebar();
         }
 
-        function updateBookmarkUI() {
-            const isBookmarked = bookmarks.includes(currentChapterId);
-            if (isBookmarked) {
-                bookmarkIcon.className = 'fa-solid fa-bookmark text-rose-500';
-                bookmarkText.textContent = 'Tersimpan';
-                btnBookmark.classList.add('text-rose-400');
-            } else {
-                bookmarkIcon.className = 'fa-regular fa-bookmark';
-                bookmarkText.textContent = 'Tandai Bacaan';
-                btnBookmark.classList.remove('text-rose-400');
-            }
+        // Font Size Adjuster
+        function setFontSize(percent) {
+            fontSizePercent = Math.max(80, Math.min(150, percent));
+            storyContentEl.style.fontSize = `${fontSizePercent}%`;
+            fontSizeDisplay.innerText = `${fontSizePercent}%`;
+            localStorage.setItem('cda_font_size', fontSizePercent);
         }
 
-        // Toast Notification
-        function showToast(msg) {
-            toastMsg.textContent = msg;
-            toast.classList.remove('opacity-0', 'pointer-events-none');
-            toast.classList.add('opacity-100');
+        // Sidebar Controls
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
+        }
 
+        function closeSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Toast Notification Function
+        function showToast(message) {
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
             setTimeout(() => {
-                toast.classList.remove('opacity-100');
-                toast.classList.add('opacity-0', 'pointer-events-none');
+                toast.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
             }, 2500);
         }
 
-        // Drawer Modal Toggle
-        function openDrawer() {
-            drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            drawerOverlay.classList.add('opacity-100');
-            drawerContent.classList.remove('-translate-x-full');
-        }
-
-        function closeDrawer() {
-            drawerContent.classList.add('-translate-x-full');
-            drawerOverlay.classList.remove('opacity-100');
-            drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
-        }
-
-        // Download Full Novel as Offline File
-        function downloadFullNovel() {
-            let fullContent = `====================================================\n`;
-            fullContent += `NOVEL: CINTA DAN TAKDIR\n`;
-            fullContent += `PENULIS: JalonStarboy\n`;
-            fullContent += `JUMLAH BAB: 35 Bab Complete\n`;
-            fullContent += `LATAR CERITA: Kafe Dwi Jaya, Papar\n`;
-            fullContent += `TOKOH UTAMA: Rizal & Aisyah\n`;
-            fullContent += `====================================================\n\n`;
-
-            NOVEL_DATA.sections.forEach(sec => {
-                fullContent += `\n*** ${sec.title.toUpperCase()} ***\n\n`;
-                sec.chapters.forEach(ch => {
-                    fullContent += `--- Bab ${ch.id}: ${ch.title} ---\n\n`;
-                    // Convert HTML paragraphs to plain text lines
-                    const rawHtml = generateStoryText(ch.id, ch.title);
-                    const cleanText = rawHtml
-                        .replace(/<p[^>]*>/g, '')
-                        .replace(/<\/p>/g, '\n\n')
-                        .replace(/<[^>]+>/g, '')
-                        .trim();
-                    fullContent += cleanText + `\n\n----------------------------------------------------\n\n`;
-                });
-            });
-
-            const blob = new Blob([fullContent], { type: 'text/plain;charset=utf-8' });
+        // Download HTML File for Offline Reading
+        function downloadSelfHtml() {
+            const fullHtml = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `Cinta_Dan_Takdir_JalonStarboy_Full_35_Bab.txt`;
+            a.download = 'Cinta_Dan_Takdir_Novel_Lengkap.html';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-
-            showToast('Mengunduh novel lengkap (35 Bab)...');
+            showToast('Aplikasi Novel berhasil diunduh!');
         }
 
-        // --- 5. EVENT LISTENERS ---
-        btnFontInc.onclick = () => {
-            if (fontSizePercent < 150) {
-                fontSizePercent += 10;
-                updateFontSize();
+        // Theme Toggle (Dark / Light Accent)
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+                document.body.style.backgroundColor = '#12161f';
+                document.body.style.color = '#e2e8f0';
+                localStorage.setItem('cda_theme', 'dark');
+                showToast('Mode Gelap Aktif');
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.body.style.backgroundColor = '#f8fafc';
+                document.body.style.color = '#1e293b';
+                localStorage.setItem('cda_theme', 'light');
+                showToast('Mode Terang Aktif');
             }
+        }
+
+        // --- EVENT LISTENERS ---
+        openSidebarBtn.onclick = openSidebar;
+        closeSidebarBtn.onclick = closeSidebar;
+        sidebarOverlay.onclick = closeSidebar;
+
+        btnFontDec.onclick = () => setFontSize(fontSizePercent - 10);
+        btnFontInc.onclick = () => setFontSize(fontSizePercent + 10);
+
+        prevBtn.onclick = () => {
+            if (currentChapterId > 1) loadChapter(currentChapterId - 1);
         };
 
-        btnFontDec.onclick = () => {
-            if (fontSizePercent > 80) {
-                fontSizePercent -= 10;
-                updateFontSize();
-            }
+        nextBtn.onclick = () => {
+            if (currentChapterId < allChapters.length) loadChapter(currentChapterId + 1);
         };
 
-        btnThemeToggle.onclick = toggleTheme;
-        btnBookmark.onclick = toggleBookmark;
+        bookmarkBtn.onclick = toggleBookmark;
+        downloadWebBtn.onclick = downloadSelfHtml;
+        themeToggleBtn.onclick = toggleTheme;
 
-        btnPrevChapter.onclick = () => loadChapter(currentChapterId - 1);
-        btnNextChapter.onclick = () => loadChapter(currentChapterId + 1);
-
-        btnOpenDrawer.onclick = openDrawer;
-        btnOpenTocCenter.onclick = openDrawer;
-        btnCloseDrawer.onclick = closeDrawer;
-        drawerOverlay.onclick = (e) => {
-            if (e.target === drawerOverlay) closeDrawer();
-        };
-
-        searchChapter.oninput = (e) => renderDrawerList(e.target.value.trim());
-        btnDownloadNovel.onclick = downloadFullNovel;
-
-        // --- 6. INITIALIZATION ---
+        // --- INITIALIZATION ON LOAD ---
         window.onload = () => {
-            loadChapter(1);
-            renderDrawerList();
+            setFontSize(fontSizePercent);
+            loadChapter(currentChapterId);
+            renderSidebar();
+            
+            // Set Initial Theme according to preference
+            if (!isDarkMode) {
+                document.documentElement.classList.remove('dark');
+                document.body.style.backgroundColor = '#f8fafc';
+                document.body.style.color = '#1e293b';
+            }
         };
     </script>
 </body>
